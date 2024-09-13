@@ -18,7 +18,7 @@ dive_shop_data(id INTEGER PRIMARY KEY autoincrement, shopName TEXT, shopPhone TE
 cursor.execute(createTable)
 
 #-----------------------------------------------------------------------------------------------------------------#
-os.environ["PATH"] += os.pathsep + r'/Users/joshmorris/Documents/Side Projects/Ocean Explorer Jamaica/backend/scraper/chromedriver'
+os.environ["PATH"] += os.pathsep + r'/Users/joshmorris/Documents/Side Projects/Ocean Explorer Jamaica/scraper/chromedriver'
 chrome_options = Options()
 #chrome_options.add_argument("--headless")
 browser = webdriver.Chrome()
@@ -42,5 +42,4 @@ for x in range(1,3):
         name = name.text
         print(name)
 
-        
         
