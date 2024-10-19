@@ -5,11 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dive Shop Explorer</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> 
 </head>
 <body>
+    <style>
+        body {
+        background: linear-gradient(to right, #2196F3, #4caf50); /* Blue to Green gradient from left to right */
+        min-height: 100vh; /* Ensure it covers the full height */
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="{{ url_for('index') }}">Dive Shops</a>
+            <a class="nav-item nav-link" href="#">Find A Shop</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container mt-4">
+        <h1 class="text-center">Dive Shop Explorer</h1>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <input type="text" id="search" class="form-control" placeholder="Search for a dive shop location..." aria-label="Search">
+            </div>
+            <div class="col-md-6">
+                <select id="filter" class="form-control">
+                    <option value="">All Types</option>
+                    <option value="scuba">Scuba Diving</option>
+                    <option value="snorkeling">Snorkelling/ Swimming</option>
+                    <option value="freediving">Conservation</option>
+                    <option value="freediving"> First Aid/ CPR</option>
+                    <!-- Add more filters as needed -->
+                </select>
+            </div>
+        </div>
+        <div class="row" id="shop-list"></div>
+    </div>
+
     <div class="container">
-        <h1 class="text-center my-4">Dive Shop Explorer</h1>
         <div class="row" id="shop-list"></div>
     </div>
     <script>

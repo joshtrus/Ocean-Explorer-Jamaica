@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Dive Shop Explorer</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> 
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="{{ url_for('index') }}">Dive Shops</a>
+            <a class="nav-item nav-link" href="#">Find A Shop</a>
+          </div>
+        </div>
+      </nav>
+    <div class="container">
+        <h1 class="text-center my-4">Welcome to Dive Shop Explorer</h1>
+        <p class="text-center">Discover the best dive spots around Jamaica.</p>
+        <div class="text-center">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">View Dive Shops</a>
+            <a href="#" class="btn btn-primary">Find A shop Near You</a>
+            
+        </div>
+    </div>
+</body>
+</html>
