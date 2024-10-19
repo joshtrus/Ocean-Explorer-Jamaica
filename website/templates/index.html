@@ -4,23 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dive Shop Explorer</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Dive Shop Explorer</h1>
-    <div id="shop-list"></div>
+    <div class="container">
+        <h1 class="text-center my-4">Dive Shop Explorer</h1>
+        <div class="row" id="shop-list"></div>
+    </div>
     <script>
         fetch('/dive-shops')
             .then(response => response.json())
             .then(data => {
                 const shopList = document.getElementById('shop-list');
                 data.forEach(shop => {
-                    const shopElement = document.createElement('div');
-
                     const imageUrl = shop.image_url ? shop.image_url : "{{ url_for('static', filename='images/dsl_placeholder.webp') }}";
 
+                    const shopElement = document.createElement('div');
+                    shopElement.classList.add('col-md-4', 'mb-4');
 
-                    shopElement.innerHTML = `<img src="${imageUrl}" alt="${shop.name}" style="width:150px; height:150px; object-fit:cover;"><h3>${shop.name}</h3><p>${shop.address}</p>`;
+                    shopElement.innerHTML = `
+                        <div class="card h-100">
+                            <img src="${imageUrl}" class="card-img-top" alt="${shop.name}" style="height:200px; object-fit:cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">${shop.name}</h5>
+                                <p class="card-text">${shop.address}</p>
+                                <p class="card-text">${shop.activity}</p>
+                            </div>
+                        </div>
+                    `;
                     shopList.appendChild(shopElement);
                 });
             });
