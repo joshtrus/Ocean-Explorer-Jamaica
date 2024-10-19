@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dive Shop Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Dive Shop Explorer</h1>
+    <div id="shop-list"></div>
+    <script>
+        fetch('/dive-shops')
+            .then(response => response.json())
+            .then(data => {
+                const shopList = document.getElementById('shop-list');
+                data.forEach(shop => {
+                    const shopElement = document.createElement('div');
+
+                    const imageUrl = shop.image_url ? shop.image_url : "{{ url_for('static', filename='images/dsl_placeholder.webp') }}";
+
+
+                    shopElement.innerHTML = `<img src="${imageUrl}" alt="${shop.name}" style="width:150px; height:150px; object-fit:cover;"><h3>${shop.name}</h3><p>${shop.address}</p>`;
+                    shopList.appendChild(shopElement);
+                });
+            });
+    </script>
+</body>
+</html>
+
